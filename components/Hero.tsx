@@ -5,7 +5,11 @@
  * and contact information. This is the first section visitors see.
  */
 
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
+import ContactModal from './ContactModal';
 
 interface HeroProps {
   profile: {
@@ -20,8 +24,17 @@ interface HeroProps {
 }
 
 export default function Hero({ profile }: HeroProps) {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
     <section className="relative flex flex-col items-center justify-center px-4 pt-20 pb-8">
+      {/* Contact Me Button - Top Left */}
+      <button
+        onClick={() => setIsContactModalOpen(true)}
+        className="fixed top-6 left-6 z-40 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all hover:scale-105"
+      >
+        Contact Me
+      </button>
       {/* Profile Photo */}
       <div className="mb-8">
         <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white shadow-lg">
@@ -56,6 +69,12 @@ export default function Hero({ profile }: HeroProps) {
       <p className="text-base text-gray-600 text-center">
         {profile.subtitle} • {profile.email}
       </p>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </section>
   );
 }
