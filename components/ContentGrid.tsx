@@ -4,6 +4,8 @@
  * Unified grid displaying all content (services, articles, books) in a consistent card layout.
  */
 
+import Image from 'next/image';
+
 interface ContentItem {
   id: string;
   type: 'service' | 'article' | 'book';
@@ -16,6 +18,7 @@ interface ContentItem {
   color: string;
   icon?: string;
   features?: string[];
+  coverImage?: string;
 }
 
 interface ContentGridProps {
@@ -48,12 +51,22 @@ function ContentCard({ item }: { item: ContentItem }) {
       {...linkProps}
       className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
     >
-      {/* Icon/Illustration */}
+      {/* Icon/Illustration or Book Cover */}
       <div
-        className="mb-4 flex h-40 items-center justify-center rounded-lg"
-        style={{ backgroundColor: item.color }}
+        className="mb-4 flex h-40 items-center justify-center rounded-lg overflow-hidden"
+        style={{ backgroundColor: item.coverImage ? 'transparent' : item.color }}
       >
-        <div className="text-6xl">{item.icon || '📚'}</div>
+        {item.coverImage ? (
+          <Image
+            src={item.coverImage}
+            alt={item.title}
+            width={160}
+            height={160}
+            className="w-full h-full object-contain"
+          />
+        ) : (
+          <div className="text-6xl">{item.icon || '📚'}</div>
+        )}
       </div>
 
       {/* Title */}

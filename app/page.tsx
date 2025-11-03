@@ -45,6 +45,7 @@ export default function Home() {
       url: book.url,
       color: book.color,
       icon: '📖',
+      coverImage: book.cover,
     })),
   ];
 
