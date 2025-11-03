@@ -35,6 +35,7 @@ export default function Home() {
       url: article.url,
       color: '#E0F2FE',
       icon: article.icon,
+      coverImage: article.cover,
     })),
     // Books
     ...booksData.books.map((book: any) => ({
