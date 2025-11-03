@@ -141,54 +141,41 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
     );
   }
 
-  // For articles/books: keep original design
+  // For articles/books: use background image with overlay text (similar to services)
   return (
     <>
-      {/* Icon/Illustration or Book Cover */}
-      <div
-        className={`mb-4 flex ${imageHeight} items-center justify-center rounded-lg overflow-hidden`}
-        style={{ backgroundColor: item.coverImage ? 'transparent' : item.color }}
-      >
+      {/* Background Image with Overlay */}
+      <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
+        {/* Background Image */}
         {item.coverImage ? (
-          <Image
-            src={item.coverImage}
-            alt={item.title}
-            width={160}
-            height={160}
-            className="w-full h-full object-contain"
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${item.coverImage})`
+            }}
           />
         ) : (
-          <div className="text-6xl">{item.icon || '📚'}</div>
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ backgroundColor: item.color }}
+          >
+            <div className="text-6xl">{item.icon || '📚'}</div>
+          </div>
         )}
-      </div>
 
-      {/* Title */}
-      <h3 className="mb-2 text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
-        {item.title}
-      </h3>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
 
-      {/* Subtitle and description */}
-      {item.subtitle && (
-        <p className="text-sm text-gray-500 mb-2">{item.subtitle}</p>
-      )}
-      <p className="text-sm text-gray-600 mb-3">{item.description}</p>
-
-      {/* Click indicator */}
-      <div className="mt-4 text-sm text-purple-600 font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
-        {item.type === 'book' ? '자세히 보기' : '방문하기'}
-        <svg
-          className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
+        {/* Title, Subtitle and Description at Bottom */}
+        <div className="absolute inset-x-0 bottom-0 p-6 text-center">
+          <h3 className="text-xl font-bold text-white drop-shadow-lg mb-1">
+            {item.title}
+          </h3>
+          {item.subtitle && (
+            <p className="text-xs text-white/80 font-medium mb-1">{item.subtitle}</p>
+          )}
+          <p className="text-xs text-white/70 line-clamp-2">{item.description}</p>
+        </div>
       </div>
     </>
   );
