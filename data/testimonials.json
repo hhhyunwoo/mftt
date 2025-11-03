@@ -1,0 +1,24 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "type": "Friend recommendation",
+      "name": "Kisang Pak",
+      "nameKorean": "박기상",
+      "role": "Startup Founder",
+      "company": "Tech Startup",
+      "quote": "JK's insights on career development and leadership have been invaluable to my journey. His mentoring helped me navigate critical decisions.",
+      "image": "/images/testimonials/kisang.jpg"
+    },
+    {
+      "id": 2,
+      "type": "Client testimonial",
+      "name": "Sarah Kim",
+      "nameKorean": "김서라",
+      "role": "Product Manager",
+      "company": "Tech Company",
+      "quote": "The career coaching sessions transformed my approach to professional growth. Highly recommended for anyone in their 20s or 30s.",
+      "image": "/images/testimonials/sarah.jpg"
+    }
+  ]
+}

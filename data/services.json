@@ -1,0 +1,50 @@
+{
+  "services": [
+    {
+      "id": "one-on-one-coaching",
+      "title": "1-on-1 Coaching",
+      "titleKorean": "1:1 코칭",
+      "price": "$125.00",
+      "currency": "USD",
+      "description": "Personal career mentoring sessions tailored to your goals",
+      "illustration": "/images/illustrations/one-on-one.svg",
+      "color": "#FEF3C7",
+      "features": [
+        "60-minute sessions",
+        "Personalized advice",
+        "Action planning"
+      ]
+    },
+    {
+      "id": "career-group-coaching",
+      "title": "Career Group Coaching",
+      "titleKorean": "커리어 그룹 코칭",
+      "price": "$225.00",
+      "currency": "USD",
+      "description": "Group sessions for career development and transitions",
+      "illustration": "/images/illustrations/career-journey.svg",
+      "color": "#D4F4DD",
+      "features": [
+        "Small group setting",
+        "Peer learning",
+        "Structured curriculum"
+      ]
+    },
+    {
+      "id": "leadership-coaching",
+      "title": "Leadership Coaching",
+      "titleKorean": "리더십 코칭 세션",
+      "subtitle": "그룹 코칭을 들으신 분들",
+      "price": "$150.00",
+      "currency": "USD",
+      "description": "Develop your leadership potential and management skills",
+      "illustration": "/images/illustrations/leadership.svg",
+      "color": "#E0E0E0",
+      "features": [
+        "Leadership assessment",
+        "Skill development",
+        "Practice scenarios"
+      ]
+    }
+  ]
+}
