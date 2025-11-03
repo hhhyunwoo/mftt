@@ -49,13 +49,14 @@
       "id": "powerful-presentation",
       "title": "Powerful Presentation",
       "titleKorean": "파워풀 프레젠테이션",
-      "price": "240 mins",
+      "price": "$300",
       "currency": "USD",
       "description": "Master presentation skills and PowerPoint design techniques",
       "illustration": "/images/illustrations/ppt-upskilling.svg",
       "color": "#FFE4E6",
       "cover": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
       "features": [
+        "240 mins",
         "4 steps to master presentation skill, P.A.S.S",
         "Strong confidence and presence in organization",
         "Hands-on practice"
