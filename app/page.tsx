@@ -13,7 +13,7 @@ export default function Home() {
   // Combine all content items into a unified array
   const contentItems = [
     // Services
-    ...servicesData.services.map((service) => ({
+    ...servicesData.services.map((service: any) => ({
       id: service.id,
       type: 'service' as const,
       title: service.title,
@@ -26,7 +26,7 @@ export default function Home() {
       features: service.features,
     })),
     // Articles
-    ...articlesData.articles.map((article) => ({
+    ...articlesData.articles.map((article: any) => ({
       id: article.id,
       type: 'article' as const,
       title: article.title,
@@ -36,7 +36,7 @@ export default function Home() {
       icon: article.icon,
     })),
     // Books
-    ...booksData.books.map((book) => ({
+    ...booksData.books.map((book: any) => ({
       id: book.id,
       type: 'book' as const,
       title: book.title,

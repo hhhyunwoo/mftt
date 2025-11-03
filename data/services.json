@@ -1,9 +1,9 @@
 {
   "services": [
     {
-      "id": "one-on-one-coaching",
-      "title": "1 on 1 Coaching",
-      "titleKorean": "1:1 코칭",
+      "id": "one-on-one-mentoring",
+      "title": "1:1 Mentoring",
+      "titleKorean": "1:1 멘토링",
       "price": "$125.00",
       "currency": "USD",
       "description": "Personal career mentoring sessions tailored to your goals",
@@ -16,9 +16,9 @@
       ]
     },
     {
-      "id": "group-coaching",
-      "title": "Group Coaching",
-      "titleKorean": "그룹 코칭",
+      "id": "group-mentoring",
+      "title": "Group Mentoring",
+      "titleKorean": "그룹 멘토링",
       "price": "$225.00",
       "currency": "USD",
       "description": "Group sessions for career development and transitions",
@@ -46,9 +46,9 @@
       ]
     },
     {
-      "id": "ppt-upskilling",
-      "title": "PPT Upskilling",
-      "titleKorean": "PPT 업스킬링",
+      "id": "powerful-presentation",
+      "title": "Powerful Presentation",
+      "titleKorean": "파워풀 프레젠테이션",
       "price": "$150.00",
       "currency": "USD",
       "description": "Master presentation skills and PowerPoint design techniques",
