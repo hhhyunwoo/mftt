@@ -106,8 +106,8 @@ function ContentCard({ item, onClick, isNarrow }: { item: ContentItem; onClick: 
 }
 
 function CardContent({ item, isService, isNarrow }: { item: ContentItem; isService: boolean; isNarrow: boolean }) {
-  // Adjust height based on card type
-  const imageHeight = isNarrow ? 'h-56' : 'h-48';
+  // Adjust height based on card type - taller for services to match articles/books
+  const imageHeight = isNarrow ? 'h-64' : 'h-48';
 
   // For services: use background image with overlay text
   if (isService) {
