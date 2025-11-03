@@ -2,7 +2,7 @@
   "services": [
     {
       "id": "one-on-one-coaching",
-      "title": "1-on-1 Coaching",
+      "title": "1 on 1 Coaching",
       "titleKorean": "1:1 코칭",
       "price": "$125.00",
       "currency": "USD",
@@ -16,13 +16,13 @@
       ]
     },
     {
-      "id": "career-group-coaching",
-      "title": "Career Group Coaching",
-      "titleKorean": "커리어 그룹 코칭",
+      "id": "group-coaching",
+      "title": "Group Coaching",
+      "titleKorean": "그룹 코칭",
       "price": "$225.00",
       "currency": "USD",
       "description": "Group sessions for career development and transitions",
-      "illustration": "/images/illustrations/career-journey.svg",
+      "illustration": "/images/illustrations/group-coaching.svg",
       "color": "#D4F4DD",
       "features": [
         "Small group setting",
@@ -31,19 +31,33 @@
       ]
     },
     {
-      "id": "leadership-coaching",
-      "title": "Leadership Coaching",
-      "titleKorean": "리더십 코칭 세션",
-      "subtitle": "그룹 코칭을 들으신 분들",
+      "id": "book-coaching",
+      "title": "Book Coaching",
+      "titleKorean": "북 코칭",
+      "price": "$180.00",
+      "currency": "USD",
+      "description": "Guided reading and discussion sessions for professional development",
+      "illustration": "/images/illustrations/book-coaching.svg",
+      "color": "#E0E7FF",
+      "features": [
+        "Curated book selection",
+        "Deep dive discussions",
+        "Actionable insights"
+      ]
+    },
+    {
+      "id": "ppt-upskilling",
+      "title": "PPT Upskilling",
+      "titleKorean": "PPT 업스킬링",
       "price": "$150.00",
       "currency": "USD",
-      "description": "Develop your leadership potential and management skills",
-      "illustration": "/images/illustrations/leadership.svg",
-      "color": "#E0E0E0",
+      "description": "Master presentation skills and PowerPoint design techniques",
+      "illustration": "/images/illustrations/ppt-upskilling.svg",
+      "color": "#FFE4E6",
       "features": [
-        "Leadership assessment",
-        "Skill development",
-        "Practice scenarios"
+        "Design principles",
+        "Storytelling techniques",
+        "Hands-on practice"
       ]
     }
   ]

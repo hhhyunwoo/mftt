@@ -89,7 +89,7 @@ Display services as visual cards (2-3 per row on desktop, stack on mobile):
 ```json
 {
   "name": "JK Park",
-  "nameKorean": "박제케이",
+  "nameKorean": "박중근",
   "title": "Career Development/Start-up/Leadership/Digital Transformation",
   "tagline": "Mentoring for Twenties and Thirties",
   "subtitle": "강연/어드바이징 등 비지니스 관련 문의",

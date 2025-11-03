@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": "70-generation",
+      "title": "70년대생이 운다",
+      "subtitle": "꼰대의 길목에 선 리더를 향한 위로와 공감",
+      "description": "70년대생 리더들을 위한 위로와 공감의 메시지",
+      "url": "https://product.kyobobook.co.kr/detail/S000000786799",
+      "cover": "/images/books/70-generation.jpg",
+      "color": "#FEF3C7"
+    },
+    {
+      "id": "selfish-leader-manual",
+      "title": "이기적인 팀장 사용 설명서",
+      "subtitle": "",
+      "description": "팀장으로서 생존하고 성장하기 위한 실전 가이드",
+      "url": "https://product.kyobobook.co.kr/detail/S000060622096",
+      "cover": "/images/books/selfish-leader-manual.jpg",
+      "color": "#D4F4DD"
+    }
+  ]
+}

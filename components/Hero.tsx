@@ -5,6 +5,8 @@
  * and contact information. This is the first section visitors see.
  */
 
+import Image from 'next/image';
+
 interface HeroProps {
   profile: {
     name: string;
@@ -19,11 +21,18 @@ interface HeroProps {
 
 export default function Hero({ profile }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20">
+    <section className="relative flex flex-col items-center justify-center px-4 pt-20 pb-8">
       {/* Profile Photo */}
       <div className="mb-8">
-        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white shadow-lg flex items-center justify-center">
-          <div className="text-6xl">👤</div>
+        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-white shadow-lg">
+          <Image
+            src={profile.profileImage}
+            alt={profile.name}
+            width={160}
+            height={160}
+            className="w-full h-full object-cover"
+            priority
+          />
         </div>
       </div>
 
