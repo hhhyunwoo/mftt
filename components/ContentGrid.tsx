@@ -153,7 +153,7 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
     return (
       <>
         {/* Background Image with Overlay - Articles only */}
-        <div className={`relative ${imageHeight} -m-6 mb-0 overflow-hidden rounded-2xl`}>
+        <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
           {/* Background Image */}
           {item.coverImage ? (
             <Image
