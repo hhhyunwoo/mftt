@@ -31,7 +31,7 @@ export default function Hero({ profile }: HeroProps) {
       {/* Contact Me Button - Top Left */}
       <button
         onClick={() => setIsContactModalOpen(true)}
-        className="fixed top-6 left-6 z-40 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full shadow-lg hover:from-purple-700 hover:to-pink-700 transition-all hover:scale-105"
+        className="absolute top-4 left-4 z-40 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-lg shadow-md hover:bg-gray-900 transition-colors"
       >
         Contact Me
       </button>
