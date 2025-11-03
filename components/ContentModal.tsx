@@ -71,45 +71,14 @@ export default function ContentModal({ item, isOpen, onClose }: ContentModalProp
         </button>
 
         <div className="p-8">
-          {/* Header with icon/image */}
+          {/* Header */}
           <div className="mb-6">
-            {item.coverImage ? (
-              <div className="w-48 h-64 mx-auto mb-6">
-                <Image
-                  src={item.coverImage}
-                  alt={item.title}
-                  width={192}
-                  height={256}
-                  className="w-full h-full object-contain rounded-lg shadow-md"
-                />
-              </div>
-            ) : (
-              <div
-                className="w-24 h-24 mx-auto mb-6 rounded-2xl flex items-center justify-center"
-                style={{ backgroundColor: item.color }}
-              >
-                <span className="text-5xl">{item.icon || '📚'}</span>
-              </div>
-            )}
-
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">
               {item.title}
             </h2>
 
-            {item.titleKorean && (
-              <p className="text-lg text-gray-600 text-center mb-3">
-                {item.titleKorean}
-              </p>
-            )}
-
-            {item.subtitle && (
-              <p className="text-base text-gray-500 text-center mb-4">
-                {item.subtitle}
-              </p>
-            )}
-
             {item.price && (
-              <p className="text-4xl font-bold text-gray-900 text-center">
+              <p className="text-lg font-semibold text-gray-700 text-center mb-4">
                 {item.price}
               </p>
             )}
