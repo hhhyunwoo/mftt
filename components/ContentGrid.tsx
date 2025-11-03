@@ -107,10 +107,10 @@ function ContentCard({ item, onClick, isNarrow }: { item: ContentItem; onClick: 
 
 function CardContent({ item, isService, isNarrow }: { item: ContentItem; isService: boolean; isNarrow: boolean }) {
   // Adjust height based on card type
-  // Services: h-64, Books: h-[500px], Articles: h-80
+  // Services: h-96, Books: h-[500px], Articles: h-80
   let imageHeight = 'h-80';
   if (isNarrow) {
-    imageHeight = 'h-64'; // Services
+    imageHeight = 'h-96'; // Services - taller for better visual impact
   } else if (item.type === 'book') {
     imageHeight = 'h-[500px]'; // Books - very tall to show full cover image without cropping
   } else if (item.type === 'article') {
