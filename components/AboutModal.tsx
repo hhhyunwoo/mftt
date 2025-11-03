@@ -57,7 +57,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
           {/* Header */}
           <div className="mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
-              JK Park <span className="text-3xl text-gray-600">(박중근)</span>
+              Who is JK Park <span className="text-3xl text-gray-600">(박중근)</span>?
             </h2>
           </div>
 
@@ -194,10 +194,10 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
             <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-3">💡 멘토링 철학</h3>
               <p className="text-gray-700 italic">
-                "글로벌 기업에서의 20년 경험을 통해 배운 가장 중요한 것은,
+                &ldquo;글로벌 기업에서의 20년 경험을 통해 배운 가장 중요한 것은,
                 모든 사람이 고유한 잠재력을 가지고 있다는 것입니다.
                 저의 역할은 그 잠재력을 발견하고 현실로 만들 수 있도록
-                실전에서 검증된 전략과 따뜻한 격려를 함께 제공하는 것입니다."
+                실전에서 검증된 전략과 따뜻한 격려를 함께 제공하는 것입니다.&rdquo;
               </p>
             </div>
 

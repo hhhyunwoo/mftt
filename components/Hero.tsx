@@ -87,7 +87,7 @@ export default function Hero({ profile }: HeroProps) {
       </p>
 
       {/* Subtitle and Contact */}
-      <p className="text-base text-gray-600 text-center">
+      <div className="text-base text-gray-600 text-center">
         {profile.subtitle} •{' '}
         <span className="inline-flex items-center gap-2">
           <span className="text-gray-600">{profile.email}</span>
@@ -101,7 +101,7 @@ export default function Hero({ profile }: HeroProps) {
             </svg>
           </button>
         </span>
-      </p>
+      </div>
 
       {/* Toast notification */}
       {emailCopied && (
