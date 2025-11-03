@@ -122,22 +122,15 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
     return (
       <>
         {/* Background Image with Overlay */}
-        <div className={`relative ${imageHeight} -m-6 mb-0 overflow-hidden rounded-2xl`}>
+        <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
           {/* Background Image */}
-          {item.coverImage ? (
-            <Image
-              src={item.coverImage}
-              alt={item.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            />
-          ) : (
-            <div
-              className="absolute inset-0"
-              style={{ backgroundColor: item.color }}
-            />
-          )}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundColor: item.color,
+              backgroundImage: item.coverImage ? `url(${item.coverImage})` : 'none'
+            }}
+          />
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
@@ -156,19 +149,61 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
     );
   }
 
-  // For articles/books: use background image with overlay text (similar to services)
+  // For articles: use Next.js Image component for better sizing
+  // For books: use regular img tag to avoid stretching
+  if (item.type === 'article') {
+    return (
+      <>
+        {/* Background Image with Overlay - Articles only */}
+        <div className={`relative ${imageHeight} -m-6 mb-0 overflow-hidden rounded-2xl`}>
+          {/* Background Image */}
+          {item.coverImage ? (
+            <Image
+              src={item.coverImage}
+              alt={item.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ backgroundColor: item.color }}
+            >
+              <div className="text-6xl">{item.icon || '📚'}</div>
+            </div>
+          )}
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+
+          {/* Title, Subtitle and Description at Bottom */}
+          <div className="absolute inset-x-0 bottom-0 p-6 text-center">
+            <h3 className="text-xl font-bold text-white drop-shadow-lg mb-1">
+              {item.title}
+            </h3>
+            {item.subtitle && (
+              <p className="text-xs text-white/80 font-medium mb-1">{item.subtitle}</p>
+            )}
+            <p className="text-xs text-white/70 line-clamp-2">{item.description}</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // For books: keep original style
   return (
     <>
       {/* Background Image with Overlay */}
-      <div className={`relative ${imageHeight} -m-6 mb-0 overflow-hidden rounded-2xl`}>
+      <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
         {/* Background Image */}
         {item.coverImage ? (
-          <Image
-            src={item.coverImage}
-            alt={item.title}
-            fill
-            className={item.type === 'book' ? 'object-contain' : 'object-cover'}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${item.coverImage})`
+            }}
           />
         ) : (
           <div
