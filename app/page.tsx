@@ -24,6 +24,7 @@ export default function Home() {
       color: service.color,
       icon: '📚',
       features: service.features,
+      coverImage: service.cover,
     })),
     // Articles
     ...articlesData.articles.map((article: any) => ({

@@ -109,6 +109,39 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
   // Adjust height based on card type
   const imageHeight = isNarrow ? 'h-56' : 'h-48';
 
+  // For services: use background image with overlay text
+  if (isService) {
+    return (
+      <>
+        {/* Background Image with Overlay */}
+        <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundColor: item.color,
+              backgroundImage: item.coverImage ? `url(${item.coverImage})` : 'none'
+            }}
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
+
+          {/* Title and Price at Bottom */}
+          <div className="absolute inset-x-0 bottom-0 p-6 text-center">
+            <h3 className="text-2xl font-bold text-white drop-shadow-lg mb-1">
+              {item.title}
+            </h3>
+            {item.price && (
+              <p className="text-sm text-white/90 font-medium">{item.price}</p>
+            )}
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // For articles/books: keep original design
   return (
     <>
       {/* Icon/Illustration or Book Cover */}
@@ -134,24 +167,15 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
         {item.title}
       </h3>
 
-      {/* For services: show only price */}
-      {isService && item.price && (
-        <p className="text-2xl font-bold text-gray-900">{item.price}</p>
+      {/* Subtitle and description */}
+      {item.subtitle && (
+        <p className="text-sm text-gray-500 mb-2">{item.subtitle}</p>
       )}
-
-      {/* For articles/books: show subtitle and description */}
-      {!isService && (
-        <>
-          {item.subtitle && (
-            <p className="text-sm text-gray-500 mb-2">{item.subtitle}</p>
-          )}
-          <p className="text-sm text-gray-600 mb-3">{item.description}</p>
-        </>
-      )}
+      <p className="text-sm text-gray-600 mb-3">{item.description}</p>
 
       {/* Click indicator */}
       <div className="mt-4 text-sm text-purple-600 font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
-        {isService ? '자세히 보기' : (item.type === 'book' ? '자세히 보기' : '방문하기')}
+        {item.type === 'book' ? '자세히 보기' : '방문하기'}
         <svg
           className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
           fill="none"

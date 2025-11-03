@@ -9,6 +9,7 @@
       "description": "Personal career mentoring sessions tailored to your goals",
       "illustration": "/images/illustrations/one-on-one.svg",
       "color": "#FEF3C7",
+      "cover": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
       "features": [
         "60 mins",
         "3 sessions"
@@ -23,6 +24,7 @@
       "description": "Group sessions for career development and transitions",
       "illustration": "/images/illustrations/group-coaching.svg",
       "color": "#D4F4DD",
+      "cover": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
       "features": [
         "90 mins",
         "3 sessions"
@@ -37,6 +39,7 @@
       "description": "Guided reading and discussion sessions for professional development",
       "illustration": "/images/illustrations/book-coaching.svg",
       "color": "#E0E7FF",
+      "cover": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
       "features": [
         "90 mins",
         "3 sessions"
@@ -51,6 +54,7 @@
       "description": "Master presentation skills and PowerPoint design techniques",
       "illustration": "/images/illustrations/ppt-upskilling.svg",
       "color": "#FFE4E6",
+      "cover": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
       "features": [
         "4 steps to master presentation skill, P.A.S.S",
         "Strong confidence and presence in organization",
