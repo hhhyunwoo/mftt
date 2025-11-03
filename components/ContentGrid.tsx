@@ -122,15 +122,22 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
     return (
       <>
         {/* Background Image with Overlay */}
-        <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
+        <div className={`relative ${imageHeight} -m-6 mb-0 overflow-hidden rounded-2xl`}>
           {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundColor: item.color,
-              backgroundImage: item.coverImage ? `url(${item.coverImage})` : 'none'
-            }}
-          />
+          {item.coverImage ? (
+            <Image
+              src={item.coverImage}
+              alt={item.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            />
+          ) : (
+            <div
+              className="absolute inset-0"
+              style={{ backgroundColor: item.color }}
+            />
+          )}
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
@@ -153,14 +160,15 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
   return (
     <>
       {/* Background Image with Overlay */}
-      <div className={`relative ${imageHeight} -m-6 overflow-hidden`}>
+      <div className={`relative ${imageHeight} -m-6 mb-0 overflow-hidden rounded-2xl`}>
         {/* Background Image */}
         {item.coverImage ? (
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${item.coverImage})`
-            }}
+          <Image
+            src={item.coverImage}
+            alt={item.title}
+            fill
+            className={item.type === 'book' ? 'object-contain' : 'object-cover'}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div
