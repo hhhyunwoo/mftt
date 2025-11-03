@@ -108,8 +108,27 @@ export default function ContentModal({ item, isOpen, onClose }: ContentModalProp
             </div>
           )}
 
-          {/* Action button for external links */}
-          {item.url && (
+          {/* Booking button for services */}
+          {item.type === 'service' && (
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors text-center"
+              onClick={(e) => {
+                // Prevent navigation until Google Form is ready
+                if (!item.url) {
+                  e.preventDefault();
+                  alert('예약 시스템 준비 중입니다. 잠시만 기다려주세요.');
+                }
+              }}
+            >
+              예약하기
+            </a>
+          )}
+
+          {/* Action button for external links (books/articles) */}
+          {item.url && item.type !== 'service' && (
             <a
               href={item.url}
               target="_blank"
