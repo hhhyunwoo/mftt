@@ -4,7 +4,11 @@
  * Unified grid displaying all content (services, articles, books) in a consistent card layout.
  */
 
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
+import ContentModal from './ContentModal';
 
 interface ContentItem {
   id: string;
@@ -26,30 +30,43 @@ interface ContentGridProps {
 }
 
 export default function ContentGrid({ items }: ContentGridProps) {
+  const [selectedItem, setSelectedItem] = useState<ContentItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCardClick = (item: ContentItem) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedItem(null), 300);
+  };
+
   return (
-    <section className="py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Unified Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((item) => (
-            <ContentCard key={item.id} item={item} />
-          ))}
+    <>
+      <section className="py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Unified Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {items.map((item) => (
+              <ContentCard key={item.id} item={item} onClick={() => handleCardClick(item)} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Modal */}
+      <ContentModal item={selectedItem} isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
   );
 }
 
-function ContentCard({ item }: { item: ContentItem }) {
-  const CardWrapper = item.url ? 'a' : 'div';
-  const linkProps = item.url
-    ? { href: item.url, target: '_blank', rel: 'noopener noreferrer' }
-    : {};
-
+function ContentCard({ item, onClick }: { item: ContentItem; onClick: () => void }) {
   return (
-    <CardWrapper
-      {...linkProps}
-      className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
+    <button
+      onClick={onClick}
+      className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl text-left w-full cursor-pointer"
     >
       {/* Icon/Illustration or Book Cover */}
       <div
@@ -69,60 +86,33 @@ function ContentCard({ item }: { item: ContentItem }) {
         )}
       </div>
 
-      {/* Title */}
-      <h3 className="mb-2 text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors">
+      {/* Title (English only) */}
+      <h3 className="mb-2 text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
         {item.title}
-        {item.titleKorean && (
-          <span className="block text-base font-normal text-gray-600 mt-1">
-            {item.titleKorean}
-          </span>
-        )}
       </h3>
-
-      {/* Subtitle */}
-      {item.subtitle && (
-        <p className="text-sm text-gray-500 mb-2">{item.subtitle}</p>
-      )}
 
       {/* Price (for services) */}
       {item.price && (
-        <p className="mb-3 text-2xl font-bold text-gray-900">{item.price}</p>
+        <p className="text-2xl font-bold text-gray-900">{item.price}</p>
       )}
 
-      {/* Description */}
-      <p className="text-sm text-gray-600 mb-3">{item.description}</p>
-
-      {/* Features (for services) */}
-      {item.features && item.features.length > 0 && (
-        <ul className="space-y-1 mb-3">
-          {item.features.map((feature, index) => (
-            <li key={index} className="text-xs text-gray-500 flex items-center">
-              <span className="mr-2">•</span>
-              {feature}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* Link Indicator (for external links) */}
-      {item.url && (
-        <div className="flex items-center text-sm text-teal-600 font-semibold">
-          {item.type === 'book' ? '자세히 보기' : '방문하기'}
-          <svg
-            className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </div>
-      )}
-    </CardWrapper>
+      {/* Click indicator */}
+      <div className="mt-4 text-sm text-purple-600 font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+        자세히 보기
+        <svg
+          className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </div>
+    </button>
   );
 }
