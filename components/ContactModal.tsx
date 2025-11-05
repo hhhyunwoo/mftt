@@ -6,7 +6,7 @@
 
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -14,6 +14,8 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [copied, setCopied] = useState(false);
+
   // Close on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -30,6 +32,18 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  const copyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    const email = 'jk.park@kempkorea.net';
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -67,9 +81,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {/* Contact Information */}
           <div className="space-y-4">
             {/* Email */}
-            <a
-              href="mailto:jk.park@kempkorea.net"
-              className="flex items-center gap-4 p-5 bg-gradient-to-r from-gray-50 to-gray-100/50 rounded-2xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group border border-gray-100"
+            <div
+              onClick={copyEmail}
+              className="flex items-center gap-4 p-5 bg-gradient-to-r from-gray-50 to-gray-100/50 rounded-2xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group border border-gray-100 cursor-pointer relative"
             >
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,10 +96,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   jk.park@kempkorea.net
                 </p>
               </div>
-              <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+              {copied ? (
+                <div className="flex items-center gap-1 text-green-600">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-xs font-medium">Copied!</span>
+                </div>
+              ) : (
+                <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              )}
+            </div>
 
             {/* LinkedIn */}
             <a
