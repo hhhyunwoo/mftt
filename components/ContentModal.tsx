@@ -9,6 +9,13 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 
+interface PriceOption {
+  duration: string;
+  priceUSD?: string;
+  priceKRW?: string;
+  note?: string;
+}
+
 interface ContentItem {
   id: string;
   type: 'service' | 'article' | 'book';
@@ -16,8 +23,10 @@ interface ContentItem {
   titleKorean?: string;
   subtitle?: string;
   description: string;
+  detailedDescription?: string;
   url?: string;
   price?: string;
+  priceOptions?: PriceOption[];
   color: string;
   icon?: string;
   features?: string[];
@@ -76,25 +85,56 @@ export default function ContentModal({ item, isOpen, onClose }: ContentModalProp
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">
               {item.title}
             </h2>
-
-            {item.price && (
-              <p className="text-lg font-semibold text-gray-700 text-center mb-4">
-                {item.price}
-              </p>
-            )}
           </div>
+
+          {/* Pricing Options */}
+          {item.priceOptions && item.priceOptions.length > 0 && (
+            <div className="mb-6 bg-gray-50 rounded-lg p-5 border border-gray-200">
+              <h3 className="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wide">가격 안내</h3>
+              <div className="space-y-2">
+                {item.priceOptions.map((option, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg p-4 border border-gray-100"
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-gray-700">{option.duration}</span>
+                      <div className="text-right">
+                        {option.priceUSD && (
+                          <div className="text-base font-bold text-gray-900">{option.priceUSD}</div>
+                        )}
+                        {option.priceKRW && (
+                          <div className="text-xs text-gray-500">{option.priceKRW}</div>
+                        )}
+                      </div>
+                    </div>
+                    {option.note && (
+                      <p className="text-xs text-gray-500 mt-2 pt-2 border-t border-gray-100">
+                        {option.note}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Description */}
           <div className="mb-6">
-            <p className="text-gray-700 leading-relaxed text-center">
-              {item.description}
-            </p>
+            <div
+              className="text-gray-700 leading-relaxed"
+              dangerouslySetInnerHTML={{
+                __html: item.description
+                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-gray-900">$1</strong>')
+                  .replace(/\n/g, '<br />')
+              }}
+            />
           </div>
 
           {/* Features */}
           {item.features && item.features.length > 0 && (
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Features</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">주요 특징</h3>
               <ul className="space-y-2">
                 {item.features.map((feature, index) => (
                   <li key={index} className="flex items-start text-gray-700">

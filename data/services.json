@@ -4,62 +4,103 @@
       "id": "one-on-one-mentoring",
       "title": "1:1 Mentoring",
       "titleKorean": "1:1 멘토링",
-      "price": "$250",
+      "price": "$100 / ₩150,000",
       "currency": "USD",
-      "description": "Personal career mentoring sessions tailored to your goals",
+      "priceOptions": [
+        {
+          "duration": "60분 1회",
+          "priceUSD": "$100",
+          "priceKRW": "₩150,000"
+        },
+        {
+          "duration": "60분 3회",
+          "priceUSD": "$250",
+          "priceKRW": "₩350,000"
+        }
+      ],
+      "description": "**Input 대비 output을 더 극대화 할 수 있는 방법**을 찾기가 쉽지 않습니다.\n\n요즘 처럼 상사와 구성원이 더 개인화되고 갈등이 심해지는 상황에서는 방법을 찾지 못하고 갈등하거나 너무 빠르게 이직하는 젊은 세대들을 많이 보게 됩니다. **열심히 일하면 당연히 따라 올 것**이라는 생각이 오히려 사람과 조직에 대한 큰 실망을 갖게 만듭니다.\n\n다양한 개인의 문제점을 상담해 드립니다. 그리고 더 큰 성과를 가져오는 핵심이 되는 **상사, 동료, 후배와의 관계를 어떻게 관리**하고 **더 큰 존재감**을 줄 수 있는 지에 대해 심도있게 1:1로 도와 드립니다.",
       "illustration": "/images/illustrations/one-on-one.svg",
       "color": "#FEF3C7",
       "cover": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
       "features": [
-        "60 mins",
-        "3 sessions"
+        "개인 고민 상담 & 맞춤형 멘토링",
+        "성장에 핵심이 되는 관계 관리 코칭",
+        "2주 단위 진행, 회차별 미션 제공"
       ]
     },
     {
       "id": "group-mentoring",
       "title": "Group Mentoring",
       "titleKorean": "그룹 멘토링",
-      "price": "$300",
+      "price": "$200 / ₩300,000",
       "currency": "USD",
-      "description": "Group sessions for career development and transitions",
+      "priceOptions": [
+        {
+          "duration": "90분 3회 (개인당)",
+          "priceUSD": "$200",
+          "priceKRW": "₩300,000"
+        }
+      ],
+      "description": "**1:1 멘토링과 동일한 내용을 그룹으로 진행**합니다.\n\n소그룹으로 진행되어 다양한 배경의 참가자들을 통해 **사회적 관계를 자연스럽게 확대** 할 수 있습니다. 개인의 고민뿐만 아니라 타인의 고민을 함께 다루며 다양한 상황을 간접 경험할 수 있는 기회를 제공합니다.\n\n같은 시기를 살아가는 동료들과 함께 성장하며, 서로의 경험에서 배우고 인사이트를 얻을 수 있습니다.",
       "illustration": "/images/illustrations/group-coaching.svg",
       "color": "#D4F4DD",
       "cover": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
       "features": [
-        "90 mins",
-        "3 sessions"
+        "2~5명 소그룹 진행",
+        "개인 & 타인의 고민을 통한 간접 경험",
+        "사회적 관계 확대 및 네트워킹"
       ]
     },
     {
       "id": "book-coaching",
       "title": "Book Coaching",
       "titleKorean": "북 코칭",
-      "price": "$300",
+      "price": "$250 / ₩350,000",
       "currency": "USD",
-      "description": "Guided reading and discussion sessions for professional development",
+      "priceOptions": [
+        {
+          "duration": "90분 3회 (개인당)",
+          "priceUSD": "$250",
+          "priceKRW": "₩350,000",
+          "note": "교재 개인 구매"
+        }
+      ],
+      "description": "**답이 점점 없어지는 시대**에 살고 있습니다.\n\n여러분의 성장에 도움을 줄 수 있는 **국내외 Guru들의 best seller를 선정**해 함께 독서합니다. 제가 **책의 핵심을 PPT로** 정리하여 여러분과 공유하고, 더불어 내용을 중심으로 **생각을 여는 질문**을 던지며 성장을 도와 드립니다.\n\n단순히 책을 읽는 것을 넘어, 그 지혜를 여러분의 삶과 커리어에 실제로 적용할 수 있도록 코칭합니다.",
       "illustration": "/images/illustrations/book-coaching.svg",
       "color": "#E0E7FF",
       "cover": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
       "features": [
-        "90 mins",
-        "3 sessions"
+        "3~6명 소그룹 진행",
+        "독서 → 핵심 정리 → 코칭형 질문 → 성장",
+        "국내외 베스트셀러 선정"
       ]
     },
     {
       "id": "powerful-presentation",
       "title": "Powerful Presentation",
       "titleKorean": "파워풀 프레젠테이션",
-      "price": "$300",
+      "price": "$300 / ₩420,000",
       "currency": "USD",
-      "description": "Master presentation skills and PowerPoint design techniques",
+      "priceOptions": [
+        {
+          "duration": "90분 3회",
+          "priceUSD": "$300",
+          "priceKRW": "₩420,000"
+        },
+        {
+          "duration": "1회 240분 (단체)",
+          "note": "회사 단체 교육 문의 가능"
+        }
+      ],
+      "description": "조직에서 성장하려면 **존재감이 매우 중요**합니다.\n\n특히 그룹을 상대로 진행하는 발표는 **존재감을 형성하는데 큰 도움**이 됩니다. 반대로 제대로 준비하지 못하면 큰 데미지를 입게 됩니다.\n\n조직에서 흔히 진행되는 **발표의 전과 후까지 어떻게 설계**해야 하는지를 PASS 4단계로 도와 드립니다. **자신감과 존재감을 키우고 성장의 속도를 가속화** 할 수 있는 멋진 기회를 놓치지 마세요.",
       "illustration": "/images/illustrations/ppt-upskilling.svg",
       "color": "#FFE4E6",
       "cover": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
       "features": [
-        "240 mins",
-        "4 steps to master presentation skill, P.A.S.S",
-        "Strong confidence and presence in organization",
-        "Hands-on practice"
+        "P.A.S.S 4단계 프레젠테이션 스킬 마스터",
+        "조직 내 자신감과 존재감 강화",
+        "실전 연습 (Hands-on practice)",
+        "발표 전후 설계 전략"
       ]
     }
   ]

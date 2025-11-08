@@ -10,6 +10,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import ContentModal from './ContentModal';
 
+interface PriceOption {
+  duration: string;
+  priceUSD?: string;
+  priceKRW?: string;
+  note?: string;
+}
+
 interface ContentItem {
   id: string;
   type: 'service' | 'article' | 'book';
@@ -17,8 +24,10 @@ interface ContentItem {
   titleKorean?: string;
   subtitle?: string;
   description: string;
+  detailedDescription?: string;
   url?: string;
   price?: string;
+  priceOptions?: PriceOption[];
   color: string;
   icon?: string;
   features?: string[];
@@ -117,6 +126,11 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
 
   // For services: use background image with overlay text
   if (isService) {
+    // Get session duration from first price option
+    const sessionInfo = item.priceOptions && item.priceOptions.length > 0
+      ? item.priceOptions[0].duration
+      : null;
+
     return (
       <>
         {/* Background Image with Overlay */}
@@ -133,13 +147,16 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
 
-          {/* Title and Price at Bottom */}
+          {/* Title, Session Info, and Price at Bottom */}
           <div className="absolute inset-x-0 bottom-0 p-6 text-center">
-            <h3 className="text-2xl font-bold text-white drop-shadow-lg mb-1">
+            <h3 className="text-2xl font-bold text-white drop-shadow-lg mb-2">
               {item.title}
             </h3>
+            {sessionInfo && (
+              <p className="text-xs text-white/80 font-medium mb-1">{sessionInfo}</p>
+            )}
             {item.price && (
-              <p className="text-sm text-white/90 font-medium">{item.price}</p>
+              <p className="text-sm text-white/90 font-semibold">{item.price}</p>
             )}
           </div>
         </div>
