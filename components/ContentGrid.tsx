@@ -120,12 +120,12 @@ function ContentCard({ item, onClick, isNarrow }: { item: ContentItem; onClick: 
 
 function CardContent({ item, isService, isNarrow }: { item: ContentItem; isService: boolean; isNarrow: boolean }) {
   // Adjust height based on card type
-  // Services: h-72, Books: h-[500px], Articles: h-[500px] (same as books for consistency)
-  let imageHeight = 'h-[500px]';
+  // Services: h-72, Books: h-[400px], Articles: h-[400px] (same as books for consistency)
+  let imageHeight = 'h-[400px]';
   if (isNarrow) {
     imageHeight = 'h-72'; // Services - reduced height for better layout
   } else if (item.type === 'book' || item.type === 'article') {
-    imageHeight = 'h-[500px]'; // Books and Articles - same height for visual consistency
+    imageHeight = 'h-[400px]'; // Books and Articles - reduced height for better layout
   }
 
   // For services: use background image with overlay text
