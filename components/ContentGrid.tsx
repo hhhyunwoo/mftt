@@ -12,7 +12,7 @@ import ContentModal from './ContentModal';
 
 interface ContentItem {
   id: string;
-  type: 'service' | 'article' | 'book' | 'video' | 'column';
+  type: 'service' | 'article' | 'book';
   title: string;
   titleKorean?: string;
   subtitle?: string;
@@ -25,7 +25,6 @@ interface ContentItem {
   icon?: string;
   features?: string[];
   coverImage?: string;
-  columnList?: any[];
 }
 
 interface ContentGridProps {
@@ -51,24 +50,30 @@ export default function ContentGrid({ items }: ContentGridProps) {
 
   // Separate items by type
   const services = items.filter(item => item.type === 'service');
-  const articlesAndBooks = items.filter(item => item.type === 'article' || item.type === 'book' || item.type === 'video' || item.type === 'column');
+  const articlesAndBooks = items.filter(item => item.type === 'article' || item.type === 'book');
 
   return (
     <>
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Services Grid - 4 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {services.map((item) => (
-              <ContentCard key={item.id} item={item} onClick={() => handleCardClick(item)} isNarrow={true} />
-            ))}
+          {/* Mentoring Section */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Mentoring</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {services.map((item) => (
+                <ContentCard key={item.id} item={item} onClick={() => handleCardClick(item)} isNarrow={true} />
+              ))}
+            </div>
           </div>
 
-          {/* Articles and Books Grid - 2 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articlesAndBooks.map((item) => (
-              <ContentCard key={item.id} item={item} onClick={() => handleCardClick(item)} isNarrow={false} />
-            ))}
+          {/* Books & Writing Section */}
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Books & Writing</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {articlesAndBooks.map((item) => (
+                <ContentCard key={item.id} item={item} onClick={() => handleCardClick(item)} isNarrow={false} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -110,12 +115,12 @@ function ContentCard({ item, onClick, isNarrow }: { item: ContentItem; onClick: 
 
 function CardContent({ item, isService, isNarrow }: { item: ContentItem; isService: boolean; isNarrow: boolean }) {
   // Adjust height based on card type
-  // Services: h-96, Books: h-[500px], Articles: h-[500px] (same as books for consistency)
+  // Services: h-72, Books: h-[500px], Articles: h-[500px] (same as books for consistency)
   let imageHeight = 'h-[500px]';
   if (isNarrow) {
-    imageHeight = 'h-96'; // Services - taller for better visual impact
-  } else if (item.type === 'book' || item.type === 'article' || item.type === 'video' || item.type === 'column') {
-    imageHeight = 'h-[500px]'; // Books, Articles, Videos, and Columns - same height for visual consistency
+    imageHeight = 'h-72'; // Services - reduced height for better layout
+  } else if (item.type === 'book' || item.type === 'article') {
+    imageHeight = 'h-[500px]'; // Books and Articles - same height for visual consistency
   }
 
   // For services: use background image with overlay text

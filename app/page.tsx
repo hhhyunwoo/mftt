@@ -8,8 +8,6 @@ import profileData from '@/data/profile.json';
 import servicesData from '@/data/services.json';
 import articlesData from '@/data/articles.json';
 import booksData from '@/data/books.json';
-import mediaData from '@/data/media.json';
-import columnsData from '@/data/columns.json';
 
 export default function Home() {
   // Combine all content items into a unified array
@@ -52,31 +50,6 @@ export default function Home() {
       color: book.color,
       icon: '📖',
       coverImage: book.cover,
-    })),
-    // Media (YouTube)
-    ...mediaData.media.map((media: any) => ({
-      id: media.id,
-      type: 'video' as const,
-      title: media.title,
-      titleKorean: media.titleKorean,
-      description: media.description,
-      url: media.url,
-      color: media.color,
-      icon: media.icon,
-      coverImage: media.cover,
-    })),
-    // Columns
-    ...columnsData.columns.map((column: any) => ({
-      id: column.id,
-      type: 'column' as const,
-      title: column.title,
-      titleKorean: column.titleKorean,
-      description: column.description,
-      detailedDescription: column.detailedDescription,
-      color: column.color,
-      icon: column.icon,
-      coverImage: column.cover,
-      columnList: column.columnList,
     })),
   ];
 
