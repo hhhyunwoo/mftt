@@ -39,21 +39,23 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+        className="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
-          aria-label="Close"
-        >
-          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        {/* Close button - Fixed position */}
+        <div className="absolute top-6 right-6 z-50">
+          <button
+            onClick={onClose}
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            aria-label="Close"
+          >
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-        <div className="p-8 md:p-12">
+        <div className="p-8 md:p-12 overflow-y-auto flex-1">
           {/* Header */}
           <div className="mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-3">
@@ -83,15 +85,15 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
 
             {/* Books */}
             <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">📚 저서</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">📚 저서 EBS BOOKS</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start">
                   <span className="text-orange-500 mr-2">•</span>
-                  <span><strong>70년대생이 운다</strong> - 세대 간 소통과 조직 내 갈등에 대한 통찰</span>
+                  <span><strong>70년대생이 운다</strong> - 다른 세대를 이끌기 위한 효과적인 뉴리더십 제안</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-orange-500 mr-2">•</span>
-                  <span><strong>이기적 팀장 사용 설명서</strong> - 중간 관리자를 위한 실전 리더십 가이드</span>
+                  <span><strong>이기적 팀장 사용 설명서</strong> - 사원에서 중간 관리자까지를 위한 실전 followership</span>
                 </li>
               </ul>
             </div>
@@ -116,9 +118,9 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   <p className="font-semibold text-gray-900">Dr. Martens Korea (2016-2018)</p>
                   <p className="text-sm">General Manager / 대표이사</p>
                   <ul className="mt-2 text-sm space-y-1">
-                    <li>• P&L 책임 (매출 396억원)</li>
-                    <li>• 2년 연속 두 자릿수 성장률 달성</li>
-                    <li>• 서울 주요 상권 6개 매장 오픈 (타임스퀘어, 가로수길 등)</li>
+                    <li>• P&L 책임</li>
+                    <li>• 2년 연속 평균 35% 성장률 달성</li>
+                    <li>• 서울 및 주요 상권 30개 매장 리뉴얼 및 오픈</li>
                     <li>• 글로벌 리더십 부문 최고 점수 달성</li>
                   </ul>
                 </div>
@@ -129,21 +131,26 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   <ul className="mt-2 text-sm space-y-1">
                     <li>• 15년간 다양한 카테고리 리더십 경험</li>
                     <li>• 아웃도어 부문 7년간 16배 성장 달성</li>
-                    <li>• 러닝 카테고리 시장 점유율 3.6% → 16.8% 성장</li>
+                    <li>• 러닝 카테고리 시장 점유율 4.6% → 16.8% 성장</li>
                   </ul>
                 </div>
 
                 <div className="border-l-4 border-red-400 pl-4 py-2">
                   <p className="font-semibold text-gray-900">Coca-Cola (2001)</p>
                   <p className="text-sm">Channel Marketing Manager</p>
+                  <ul className="mt-2 text-sm space-y-1">
+                    <li>• 전 판매 채널 상품 구성 스탠다드 제작</li>
+                    <li>• 판매 채널별 마케팅 홍보 전략 수립</li>
+                  </ul>
                 </div>
 
                 <div className="border-l-4 border-gray-400 pl-4 py-2">
                   <p className="font-semibold text-gray-900">Nike Korea (1996-2000)</p>
                   <p className="text-sm">Footwear Marketing Manager</p>
-                  <p className="mt-1 text-sm text-gray-600">
-                    나이키 역사상 처음으로 Specialty Channel 구축
-                  </p>
+                  <ul className="mt-2 text-sm space-y-1">
+                    <li>• 나이키 역사상 처음으로 카테고리 전문 Specialty Channel 구축 [축구, 테니스, 야구, 골프, 아웃도어]</li>
+                    <li>• 매장 관리 영업</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -181,7 +188,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 </li>
                 <li className="flex items-start">
                   <span className="text-teal-500 mr-2">•</span>
-                  <span><strong>한국외국어대학교</strong> - 영어학과 (1987-1994)</span>
+                  <span><strong>한국외국어대학교</strong> - 영어과 (1987-1994)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-teal-500 mr-2">•</span>

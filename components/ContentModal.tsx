@@ -18,7 +18,7 @@ interface PriceOption {
 
 interface ContentItem {
   id: string;
-  type: 'service' | 'article' | 'book';
+  type: 'service' | 'article' | 'book' | 'video' | 'column';
   title: string;
   titleKorean?: string;
   subtitle?: string;
@@ -31,6 +31,12 @@ interface ContentItem {
   icon?: string;
   features?: string[];
   coverImage?: string;
+  columnList?: Array<{
+    title: string;
+    publisher: string;
+    date: string;
+    url: string;
+  }>;
 }
 
 interface ContentModalProps {
@@ -65,27 +71,27 @@ export default function ContentModal({ item, isOpen, onClose }: ContentModalProp
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
-          aria-label="Close"
-        >
-          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        {/* Fixed Header with Title and Close Button */}
+        <div className="relative border-b border-gray-200 px-8 py-6 rounded-t-3xl bg-white">
+          <h2 className="text-2xl font-bold text-gray-900 text-center pr-10">
+            {item.title}
+          </h2>
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            aria-label="Close"
+          >
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-        <div className="p-8">
-          {/* Header */}
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">
-              {item.title}
-            </h2>
-          </div>
+        {/* Scrollable content */}
+        <div className="p-8 overflow-y-auto flex-1">
 
           {/* Pricing Options */}
           {item.priceOptions && item.priceOptions.length > 0 && (
@@ -148,8 +154,42 @@ export default function ContentModal({ item, isOpen, onClose }: ContentModalProp
             </div>
           )}
 
-          {/* Booking button for services */}
-          {item.type === 'service' && (
+          {/* Column List (for column type) */}
+          {item.type === 'column' && item.columnList && item.columnList.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">기고문 목록</h3>
+              <div className="space-y-3">
+                {item.columnList.map((column, index) => (
+                  <a
+                    key={index}
+                    href={column.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-semibold text-gray-900 flex-1">{column.title}</h4>
+                      <svg className="w-5 h-5 text-gray-400 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <span>{column.publisher}</span>
+                      <span className="mx-2">•</span>
+                      <span>{column.date}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
+
+        {/* Fixed bottom buttons */}
+        {item.type === 'service' && (
+          <div className="p-6 border-t border-gray-200 bg-white rounded-b-3xl">
+            {/* Booking button for services */}
             <a
               href="#"
               target="_blank"
@@ -165,20 +205,8 @@ export default function ContentModal({ item, isOpen, onClose }: ContentModalProp
             >
               예약하기
             </a>
-          )}
-
-          {/* Action button for external links (books/articles) */}
-          {item.url && item.type !== 'service' && (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold py-4 px-6 rounded-xl hover:from-teal-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl text-center"
-            >
-              {item.type === 'book' ? '자세히 보기' : '방문하기'}
-            </a>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
