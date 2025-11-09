@@ -66,6 +66,11 @@ export default function ContentGrid({ items }: ContentGridProps) {
             </div>
           </div>
 
+          {/* Divider */}
+          <div className="mb-16">
+            <div className="w-full border-t border-gray-200"></div>
+          </div>
+
           {/* Books & Writing Section */}
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Books & Writing</h2>
