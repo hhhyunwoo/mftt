@@ -12,17 +12,20 @@ import ContentModal from './ContentModal';
 
 interface ContentItem {
   id: string;
-  type: 'service' | 'article' | 'book';
+  type: 'service' | 'article' | 'book' | 'video' | 'column';
   title: string;
   titleKorean?: string;
   subtitle?: string;
   description: string;
+  detailedDescription?: string;
   url?: string;
   price?: string;
+  priceOptions?: any;
   color: string;
   icon?: string;
   features?: string[];
   coverImage?: string;
+  columnList?: any[];
 }
 
 interface ContentGridProps {
@@ -48,7 +51,7 @@ export default function ContentGrid({ items }: ContentGridProps) {
 
   // Separate items by type
   const services = items.filter(item => item.type === 'service');
-  const articlesAndBooks = items.filter(item => item.type === 'article' || item.type === 'book');
+  const articlesAndBooks = items.filter(item => item.type === 'article' || item.type === 'book' || item.type === 'video' || item.type === 'column');
 
   return (
     <>
@@ -111,8 +114,8 @@ function CardContent({ item, isService, isNarrow }: { item: ContentItem; isServi
   let imageHeight = 'h-[500px]';
   if (isNarrow) {
     imageHeight = 'h-96'; // Services - taller for better visual impact
-  } else if (item.type === 'book' || item.type === 'article') {
-    imageHeight = 'h-[500px]'; // Books and Articles - same height for visual consistency
+  } else if (item.type === 'book' || item.type === 'article' || item.type === 'video' || item.type === 'column') {
+    imageHeight = 'h-[500px]'; // Books, Articles, Videos, and Columns - same height for visual consistency
   }
 
   // For services: use background image with overlay text
