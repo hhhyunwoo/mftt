@@ -1,0 +1,28 @@
+{
+  "columns": [
+    {
+      "id": "column-collection",
+      "type": "column",
+      "title": "Featured Columns",
+      "titleKorean": "칼럼",
+      "description": "주요 매체 기고문 모음",
+      "detailedDescription": "매일경제, 한국경제 등 주요 언론사에 기고한 칼럼들입니다.<br/><br/>리더십, 커리어, 조직 문화에 대한 인사이트를 공유하고 있습니다.",
+      "color": "#F3F4F6",
+      "icon": "✍️",
+      "columnList": [
+        {
+          "title": "첫 번째 칼럼 제목",
+          "publisher": "매일경제",
+          "date": "2024-11",
+          "url": "https://example.com/column1"
+        },
+        {
+          "title": "두 번째 칼럼 제목",
+          "publisher": "한국경제",
+          "date": "2024-10",
+          "url": "https://example.com/column2"
+        }
+      ]
+    }
+  ]
+}
