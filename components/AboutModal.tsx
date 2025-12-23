@@ -222,6 +222,25 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 </a>
               </p>
             </div>
+
+            {/* Bank Account Information */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">계좌번호</h3>
+              <div className="space-y-2 text-gray-700">
+                <div className="flex justify-between items-center py-2 px-4 bg-gray-50 rounded-lg">
+                  <span className="font-medium">SC제일은행</span>
+                  <span className="font-mono">247-20-174188</span>
+                </div>
+                <div className="flex justify-between items-center py-2 px-4 bg-gray-50 rounded-lg">
+                  <span className="font-medium">신한은행</span>
+                  <span className="font-mono">330-02-203702</span>
+                </div>
+                <div className="flex justify-between items-center py-2 px-4 bg-gray-50 rounded-lg">
+                  <span className="font-medium">카카오뱅크</span>
+                  <span className="font-mono">3333-27-2868012</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
